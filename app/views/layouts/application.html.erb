@@ -24,11 +24,12 @@
             <li><%= link_to "Log in", '#' %></li>
           </ul>
         </nav>
+        <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
       </div>
     </header>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      
       <% end %>
       <%= yield %>
     </div>
