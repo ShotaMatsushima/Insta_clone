@@ -1,5 +1,5 @@
-<% provide(:title, 'Edit') %>
-<h1>Sign up</h1>
+<% provide(:title, 'edit') %>
+<h1>プロフィール編集</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -21,7 +21,9 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= f.submit "変更する", class: "btn btn-primary" %>
     <% end %>
   </div>
+  
+  <%= link_to "delete", current_user, method: :delete, data: {confirm: "you sure"} %>
 </div>

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  
   def new
     @user=User.new
   end
@@ -18,6 +21,29 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    @user=User.find(params[:id])
+  end
+  
+  def update
+    @user=User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success]="プロフィール編集完了"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    if current_user.destroy
+      flash[:success]="削除しました"
+    redirect_to root_url
+    else
+    render 'edit'
+    end
+  end
+  
   
    private
 
@@ -25,5 +51,16 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :user_name, :password,
                                    :password_confirmation)
     end
-  
+    
+    def logged_in_user
+      unless logged_in?
+        flash[:dacger]="ログインしてください"
+        redirect_to root_url
+      end
+    end
+    
+    def correct_user
+      @user=User.find(params[:id])
+      redirect_to root_url unless @user==current_user
+    end
 end
