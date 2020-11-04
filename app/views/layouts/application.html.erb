@@ -23,6 +23,10 @@
             <% if current_user.nil? %>
             <li><%= link_to "Log in", login_path %></li>
             <% end %>
+            
+            <% if logged_in? %>
+            <%= link_to "投稿", '/microposts/new' %>
+            <% end %>
             </ul>
         </nav>
         

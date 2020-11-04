@@ -9,3 +9,16 @@
 <%= @user.name %>, <%= @user.email %>, <%= @user.user_name %>
 <%= link_to "Log out", logout_path, method: :delete %>
 <%= link_to "プロフィール編集", edit_user_path %>
+
+
+
+<div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>
