@@ -10,9 +10,13 @@
 <%= link_to "Log out", logout_path, method: :delete %>
 <%= link_to "プロフィール編集", edit_user_path %>
 
-
+<section class="stats">
+        <%= render 'shared/stats' %>
+</section>
 
 <div class="col-md-8">
+  <%= render 'follow_form' if logged_in? %>
+  
     <% if @user.microposts.any? %>
       <h3>Microposts (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
