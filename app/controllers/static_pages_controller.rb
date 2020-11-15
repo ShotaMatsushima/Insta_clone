@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
     if logged_in?
      @feed_items = current_user.feed.paginate(page: params[:page])
     else
-    redirect_to signup_path
+    redirect_to login_path
     end
   end
 

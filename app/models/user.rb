@@ -10,12 +10,18 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   
+  has_one_attached :image
   attr_accessor :remember_token
   
   before_save { self.email=email.downcase }
-  validates :name,      presence: true, length: {maximum: 50}
-  validates :user_name, presence: true, length: {maximum: 50},  uniqueness: true
-  validates :email,     presence: true, length: {maximum: 255}, uniqueness: { case_sensitive: false }
+  validates :name,          presence: true,  length: {maximum: 50}
+  validates :user_name,     presence: true,  length: {maximum: 50},  uniqueness: true
+  validates :email,         presence: true,  length: {maximum: 255}, uniqueness: { case_sensitive: false }
+  validates :introduction,  presence: false, length: {maximum: 50}
+  validates :image,   content_type: { in: %w[image/jpeg image/png],
+                                      message: "must be a valid image format" },
+                      size:         { less_than: 5.megabytes,
+                                      message: "should be less than 5MB" }
   
   has_secure_password
   validates :password,  presence: true, length: {minimum: 6}, allow_nil: true
@@ -67,4 +73,9 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+  
+   # 表示用のリサイズ済み画像を返す
+  def display_image
+    image.variant(resize_to_fill: [120, 120])
+  end                                    
 end

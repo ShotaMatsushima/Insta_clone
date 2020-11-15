@@ -1,19 +1,25 @@
-<li id="micropost-<%= micropost.id %>">
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
-  <span class="content">
-    <%= micropost.content %>
-  </span>
+<% if current_page?(root_url) %>
+  <div class="col-md-12">
+    <% else %>
+  <div class="col-md-4">
+ <% end %>
   
-  <%= image_tag micropost.display_image if micropost.image.attached? %>
-  
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-     
-    <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
+    <div class="user">
+      <%= link_to micropost.user.user_name, micropost.user %>
+     </div>
+      <% if current_page?(root_url) %>
+       <%= image_tag micropost.display_image_home if micropost.image.attached? %>
+      <% else %>
+       <%= image_tag micropost.display_image_show if micropost.image.attached? %>
+      <% end %>
+     <div class="content">
+       <%= micropost.content %>
+     </div>
+     <span class="timestamp">
+      post <%= time_ago_in_words(micropost.created_at) %> ago.
+     <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
-    <% end %>
-  </span>
-  
- 
-</li>
+     <% end %>
+  </div>
+

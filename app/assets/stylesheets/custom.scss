@@ -8,12 +8,20 @@
 }
 /* miscellaneous */
 
+body {
+  padding-top: 60px;
+}
+
 .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+ul {
+  list-style: none;
 }
 
 /* forms */
@@ -27,4 +35,44 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+.navbar-left {
+  font-size:30px;
+}
+
+.follow_btn{
+  width: 150px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.follow_btn {
+  margin: 10px 0 10px 0;
+}
+
+.user_delete {
+  margin-top: 20px;
+}
+
+
+.content {
+  word-wrap: break-word;
+}
+
+.profile-text {
+  font-weight:bold;
+  
 }

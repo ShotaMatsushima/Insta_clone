@@ -13,8 +13,7 @@ def create
     flash[:success]="投稿しました"
     redirect_to @micropost.user
   else
-    @feed_items = []
-    render 'new'
+    render 'static_pages/home'
   end
 end
 
