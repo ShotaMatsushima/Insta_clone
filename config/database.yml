@@ -26,6 +26,6 @@ production:
   # For details on connection pooling, see Rails configuration guide
   # https://railsguides.jp/configuring.html#データベース接続をプールする
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: db/production.postgresql
+  database: instagram_clone_production
   username: instagram_clone
   password: <%= ENV['INSTAGRAM_CLONE_DATABASE_PASSWORD'] %>
