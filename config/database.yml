@@ -15,6 +15,6 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: d12lr3t4fneaqn
-  username: ygkvisoveyjyqk
-  password: <%= ENV['fc7edca47b143180f2862f8b1747d0fdae9f43b277d7b658067bdec81d944805'] %>
+  database: instagram_clone_production
+  username: instagram_clone
+  password: <%= ENV['INSTAGRAM_CLONE_DATABASE_PASSWORD'] %>
