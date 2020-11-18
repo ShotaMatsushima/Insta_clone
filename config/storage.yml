@@ -11,4 +11,4 @@ local:
     access_key_id: <%= Rails.application.credentials.dig(:aws, 'AKIAQGDERNDHQK5SYS6Z') %>
     secret_access_key: <%= Rails.application.credentials.dig(:aws, 'nvGv2CJoaUTxsS4g6DIAvWdmuMMo/pZL5M5xMS+/') %>
     region: us-east-1
-    bucket: your_own_bucket
+    bucket: shota0523
