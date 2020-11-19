@@ -5,6 +5,7 @@ module SessionsHelper
     session[:user_id]=user.id
   end
   
+  #cookiesにユーザー情報を保存
   def remember(user)
     user.remember_db
     cookies.permanent.signed[:user_id]=user.id
@@ -24,6 +25,7 @@ module SessionsHelper
     end
   end
   
+  #current_userかどうかチェック
   def current_user?(user)
     user && user == current_user
   end
@@ -44,9 +46,6 @@ module SessionsHelper
     forget(current_user)
     session.delete(:user_id)
     !@current_user.nil?
-    
-    
   end
-  
   
 end
