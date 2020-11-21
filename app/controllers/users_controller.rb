@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user.image.attach(params[:user][:image])
     if @user.save
       login @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "ようこそ、インスタへ"
       redirect_to @user
     else
       render 'new'
