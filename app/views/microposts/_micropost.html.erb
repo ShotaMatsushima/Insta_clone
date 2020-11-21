@@ -10,17 +10,16 @@
     
     <% if current_page?(root_url) %>
       <%= image_tag micropost.display_image_home if micropost.image.attached? %>
+      <div class="content">
+        <%= micropost.content %>
+      </div>
     <% else %>
       <%= image_tag micropost.display_image_show if micropost.image.attached? %>
     <% end %>
     
-    <div class="content">
-      <%= micropost.content %>
-    </div>
-    
-    <span class="timestamp">
+    <div class="timestamp">
       post <%= time_ago_in_words(micropost.created_at) %> ago.
-    </span>  
+    </div>  
     
     <% if current_user?(micropost.user) %>
       <%= link_to "delete", micropost, method: :delete,
