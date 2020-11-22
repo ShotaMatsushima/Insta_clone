@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+ 
   def new
   end
   
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
        redirect_to user
     else
-       flash.now[:danger] = 'Invalid email/password combination'
+       flash.now[:danger] = 'Eメールもしくはパスワードが間違っています'
        render 'new'
     end
   end
@@ -18,6 +19,6 @@ class SessionsController < ApplicationController
   def destroy
     logout if logged_in?
     flash[:success]="ログアウトしました"
-    redirect_to root_url
+    redirect_to login_path
   end
 end

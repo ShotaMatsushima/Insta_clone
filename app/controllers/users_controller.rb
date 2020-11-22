@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy,
                                         :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     @user.image.attach(params[:user][:image])
     if @user.save
       login @user
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "ようこそ、インスタへ"
       redirect_to @user
     else
       render 'new'
@@ -45,9 +46,9 @@ class UsersController < ApplicationController
   def destroy
     if current_user.destroy
       flash[:success]="削除しました"
-    redirect_to root_url
+      redirect_to root_url
     else
-    render 'edit'
+      render 'edit'
     end
   end
   
@@ -66,11 +67,11 @@ class UsersController < ApplicationController
   end
   
   
-   private
+  private
 
     def user_params
       params.require(:user).permit(:name, :email, :user_name, :introduction, :image,
-                         :password, :password_confirmation)
+                                   :password, :password_confirmation)
     end
     
     def correct_user

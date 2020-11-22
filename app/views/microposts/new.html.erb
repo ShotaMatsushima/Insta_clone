@@ -1,21 +1,19 @@
-<h1><%= current_user.user_name %></h1>
-  
-  <span><%= link_to "view my profile", current_user %></span>
-  <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<% provide(:title, 'Post') %>
+<h1><%= link_to current_user.user_name, current_user %></h1>
+<%= form_with(model: @micropost, local: true) do |f| %>
 
-   <%= form_with(model: @micropost, local: true) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-   
-    <div class="field">
-     <%= f.text_area :content, placeholder: "Compose new micropost..." %>
-    </div>
-  
-    <span class="image">
-     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
-    </span>
-  
-    <%= f.submit "Post", class: "btn btn-primary" %>
-   
-  <% end %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Share your something" %>
+  </div>
+
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/png" %>
+  </span>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+
+<% end %>
 
  

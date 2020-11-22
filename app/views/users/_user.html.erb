@@ -1,6 +1,6 @@
   <% if !current_user?(user) || !current_page?(controller: 'users', action: 'index') %>
    <li>
-     <%= link_to user.name, user %>
+     <%= link_to user.user_name, user %>
      <% if user.image.attached? %>
        <%= image_tag user.display_image %>
      <% end %>

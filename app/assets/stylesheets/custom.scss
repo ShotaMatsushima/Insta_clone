@@ -38,11 +38,12 @@ input {
 }
 
 .navbar-left {
-  font-size:30px;
+  font-size: 30px;
 }
 
-.follow_btn{
+.follow_btn, .profile-edit {
   width: 150px;
+  margin: 10px 0 10px 0;
 }
 
 h1 {
@@ -59,10 +60,6 @@ h1 {
   }
 }
 
-.follow_btn {
-  margin: 10px 0 10px 0;
-}
-
 .user_delete {
   margin-top: 20px;
 }
@@ -73,6 +70,28 @@ h1 {
 }
 
 .profile-text {
-  font-weight:bold;
+  font-weight: bold;
   
 }
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+.micropost {
+  margin-bottom: 30px;
+}
+
+.introduction {
+  margin-left: 10px;
+}
+
